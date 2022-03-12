@@ -1,16 +1,18 @@
 const path = require('path');
-const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const express = require('express');
+const routes = require('./controllers');
 
+const sequelize = require('./config/connection')
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
+const hbs = exphbs.create({});
 
-const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+// setup session so that password can be confirmed
 const sess = {
-    secret: 'Super secret secret',
+    secret: process.env.SESSION_PW,
     cookie: {},
     resave: false,
     saveUninitialized: true,
@@ -19,19 +21,21 @@ const sess = {
     })
 };
 
-
-app.use(session(sess));
-const hbs = exphbs.create({});
-
+// app.use(session(sess));
+app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('./controllers/'));
+app.use(routes);
 
+// sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
+    app.listen(PORT, () => console.log(`App listening on port http://localhost:${PORT}`));
 });
+
+// app.listen(3001, () => {
+//     console.log(`API server now on port 3001!`);
+// });
