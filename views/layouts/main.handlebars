@@ -14,33 +14,25 @@
 <div class="w3-container">
 
 <div class="w3-bar w3-black">
-    <a href="#" class="w3-bar-item w3-button">Home</a>
+    <a href="/" class="w3-bar-item w3-button">Home</a>
     <a href="#" class="w3-bar-item w3-button">Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button">logout</a>
+    {{#if loggedIn}}
+    <button id="logout" class="w3-bar-item w3-button">logout</button>
+    {{else}}
+    <a href="/login" class="w3-bar-item w3-button">login</a>
+    {{/if}}
   </div>
 
 
 
 
 <body>
-    <div class="wrapper">
-        <header>
-            <h1>
-                <a href="/">New Tech Blog</a>
-            </h1>
-            <nav>
-                {{#if loggedIn}}
-                <button id="logout" class="btn-no-style">logout</button>
-                {{else}}
-                <a href="/login">login</a>
-                {{/if}}
-            </nav>
-        </header>
+ 
         <main>
             {{{ body }}}
         </main>
         <footer>
-            Thanks for visiting!
+           
         </footer>
     </div>
 

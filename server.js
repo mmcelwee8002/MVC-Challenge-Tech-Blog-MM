@@ -21,7 +21,7 @@ const sess = {
     })
 };
 
-// app.use(session(sess));
+app.use(session(sess));
 app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -36,6 +36,3 @@ sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`App listening on port http://localhost:${PORT}`));
 });
 
-// app.listen(3001, () => {
-//     console.log(`API server now on port 3001!`);
-// });
