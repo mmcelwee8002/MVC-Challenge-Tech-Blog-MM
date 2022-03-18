@@ -1,6 +1,6 @@
 
-.background{
-    color: blue;
+body {
+  background-color: tan;
 }
 
 /* .login-form {
@@ -17,3 +17,25 @@
   height: 475px;
   margin: 75% auto auto;
 } */
+
+
+textarea, input {
+  padding: .5%;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border: 1px solid #3486eb;
+}
+
+textarea {
+  min-width: 40%;
+  min-height: 100px;
+}
+.post-list {
+  margin: 0;
+  padding: 0;
+}
