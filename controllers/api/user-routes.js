@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
         email: req.body.email,
         password: req.body.password
     })
-    console.log('working')
+   
         .then(dbUserData => {
             req.session.save(() => {
                 req.session.user_id = dbUserData.id;

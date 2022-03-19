@@ -12,17 +12,18 @@
 <body>
 
 <div class="w3-container">
-
+<nav>
 <div class="w3-bar w3-black">
     <a href="/" class="w3-bar-item w3-button">Home</a>
-    <a href="/dashboard" class="w3-bar-item w3-button">Dashboard</a>
+    
     {{#if loggedIn}}
+    <a href="/dashboard" class="w3-bar-item w3-button">Dashboard</a>
     <button id="logout" class="w3-bar-item w3-button">logout</button>
     {{else}}
     <a href="/login" class="w3-bar-item w3-button">login</a>
     {{/if}}
   </div>
-
+</nav>
 
 
 
