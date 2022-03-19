@@ -26,7 +26,9 @@ A website is challange for bootcamp so it is an assignment It is a ORM backend c
 
 
 ## Installation instructions 
-Find the game at: https://ogrequest.herokuapp.com/
+Find the app at: https://mvc-tech-blog-mm.herokuapp.com/
+
+
 
 
 
